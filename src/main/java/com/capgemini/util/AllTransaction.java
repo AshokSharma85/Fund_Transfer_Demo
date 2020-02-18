@@ -19,6 +19,9 @@ public class AllTransaction {
 		   
 	}	
 	List <Transaction> toStoreTransaction=new ArrayList<>();
+	/*
+	 * This method will add the appropriate details to arraylist 
+	 */
 	public void addBalance(int username,int userid,double amount)
 	{   int transactionId=rand.nextInt(1000000);
 	toStoreTransaction.add(new Transaction(username,userid,amount,transactionId,new Date()));

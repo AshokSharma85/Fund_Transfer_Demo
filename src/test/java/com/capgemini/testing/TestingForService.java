@@ -23,15 +23,18 @@ class TestingForService {
 	@Test
 	public void validateReceiverTest()
 	{
-		int username=56123;
+		int username=561236;
 	  assertEquals(true,objectOfLoginUserService.validateReceiver(username));
 	}
+ /*
+  * If username of sender and receiver is same then it will write false otherwise true will be written
+  */
 
 	@Test
 	public void validateUserAndRecieverServiceTest()
 	{
 		int usernameOfReceiver=561236;
-		int usernameOfSender=562830;
+		int usernameOfSender=56123;
 		assertEquals(true,objectOfLoginUserService.validateUserAndRecieverService(usernameOfSender,usernameOfReceiver));
 	}
 	
