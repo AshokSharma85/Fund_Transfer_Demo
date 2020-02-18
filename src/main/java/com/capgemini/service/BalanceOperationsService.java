@@ -9,11 +9,11 @@ public class BalanceOperationsService implements IBalanceOperationsService  {
 	CheckTransaction objectOfCheckTransaction=new CheckTransaction();
 
 	@Override
-	public void BalanceWal(int username) {
+	public void balanceOfWal(int username) {
 		objectOfCheckBalance.balanceOfWallet(username);
 	}
 	@Override
-	public void BalanceBank(int username) {
+	public void balanceOfBank(int username) {
 		objectOfCheckBalance.balanceOfBank(username);
 	}
 	@Override
@@ -29,6 +29,5 @@ public class BalanceOperationsService implements IBalanceOperationsService  {
 		objectOfCheckTransaction.displayTransactionDao(username);
 	
 	}
-	
-	
+		
 }

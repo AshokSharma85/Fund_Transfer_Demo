@@ -14,6 +14,9 @@ public class Client {
 	    Scanner scannerVariable=new Scanner(System.in);
 	    LoginUserService objectOfLoginUser=new LoginUserService();
 		System.out.println("*********************Welcome to Fund Transfer Application*****************");
+		/*
+		 * This while loop will be used to login into application and exit from application
+		 */
 	    while(varForFirstWhileLoop)
 		{
 			System.out.println("\nPress 1: To Login\n"
@@ -24,17 +27,32 @@ public class Client {
 			case "1":
 				 System.out.println("Please Enter Your UserId");
 				 String user=scannerVariable.next();	
+				 /*
+				  * this boolean variable with validation will check whether the entered detail is having only number or not 
+				  */				 
 				 boolean validationOfUserName=Validation.check(user, Validation.pattern);
-				 if(validationOfUserName==false)
+				 /*
+				  * if this Write false then loop will break from here
+				  */
+				 if(!validationOfUserName)
 				 {
 					 System.out.println("Please Enter Valid User Id");
 					 break;
 				 }
+				 /*
+				  * After validating user we will convert that data into integer and store them in integer variable   
+				  */
 		         int username=Integer.parseInt(user);
 		         System.out.println("Please Enter Your Password");
 				 String password=scannerVariable.next();
+				 /*
+				  * this if will call the validate function of Loginuser class and return boolean 
+				  */
 				 if(objectOfLoginUser.validate(username,password))
 				 {
+				/*
+				 After login successfully this while loop will work till user do not want to logout 
+				 */
 					boolean varForSecondWhileLoop=true;
 					while(varForSecondWhileLoop)
 					{
@@ -43,14 +61,20 @@ public class Client {
 								+ "Press 3:To see Transaction History \n"
 								+ "Press 4:To Transfer Money\n"
 								+ "Press 5:To Logout");
+						/*
+						 * to take input from user to perform this operations
+						 */
 						String insideInput=scannerVariable.next();
 						switch(insideInput)
 						{
 						case "1":
-							objectOfBalanceOperations.BalanceWal(username);
+						/*
+						 * This case will return the present amount of wallet  
+						 */
+							objectOfBalanceOperations.balanceOfWal(username);
 							break;
 						case "2":
-							objectOfBalanceOperations.BalanceBank(username);
+							objectOfBalanceOperations.balanceOfBank(username);
 							break;
 						case "3":
 							objectOfBalanceOperations.displayTransactionService(username);

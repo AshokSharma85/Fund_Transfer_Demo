@@ -4,54 +4,53 @@ import java.util.Date;
 
 public class Transaction {
 
-	private int Sender;
-	private int Receiver;
-	private double Amount;
-	private int TransactionId;
-    private Date Date;
-    private String Description;
+	private int sender;
+	private int receiver;
+	private double amount;
+	private int transactionId;
+    private Date date;
 	public int getSender() {
-		return Sender;
+		return sender;
 	}
 	public void setSender(int sender) {
-		Sender = sender;
+		this.sender = sender;
 	}
 	public int getReceiver() {
-		return Receiver;
+		return receiver;
 	}
 	public void setReceiver(int receiver) {
-		Receiver = receiver;
+		this.receiver = receiver;
 	}
 	public double getAmount() {
-		return Amount;
+		return amount;
 	}
 	public void setAmount(double amount) {
-		Amount = amount;
+		this.amount = amount;
 	}
 	public int getTransactionId() {
-		return TransactionId;
+		return transactionId;
 	}
 	public void setTransactionId(int transactionId) {
-		TransactionId = transactionId;
+		this.transactionId = transactionId;
 	}
 	public Date getDate() {
-		return Date;
+		return date;
 	}
 	public void setDate(Date date) {
-		Date = date;
+		this.date = date;
 	}
-	public Transaction(int sender, int receiver, double amount, int transactionId, java.util.Date date) {
+	public Transaction(int sender, int receiver, double amount, int transactionId, Date date) {
 		super();
-		Sender = sender;
-		Receiver = receiver;
-		Amount = amount;
-		TransactionId = transactionId;
-		Date = date;
+		this.sender = sender;
+		this.receiver = receiver;
+		this.amount = amount;
+		this.transactionId = transactionId;
+		this.date = date;
 	}
 	@Override
 	public String toString() {
-		return "Transaction [Sender=" + Sender + ", Receiver=" + Receiver + ", Amount=" + Amount + ", TransactionId="
-				+ TransactionId + ", Date=" + Date + "]";
+		return "Transaction [sender=" + sender + ", receiver=" + receiver + ", amount=" + amount + ", transactionId="
+				+ transactionId + ", date=" + date + "]";
 	}
-    
+
 }

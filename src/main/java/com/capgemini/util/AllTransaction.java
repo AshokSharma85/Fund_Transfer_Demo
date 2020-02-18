@@ -11,26 +11,23 @@ import com.capgemini.bean.Users;
 
 public class AllTransaction {
 	Random rand = new Random();
-	Map<Integer,Users> hs=ToAddUser.User;
+	Map<Integer,Users> copyOfUserMap=ToAddUser.user;
      
 	public boolean checkAmount(int userName,double amount) 
-	{		
-		if(hs.get(userName).getWalletBalance()>=amount)
-		    return true;	
-		return false;	
-	}
-	
-	
-	List <Transaction> tr=new ArrayList<Transaction>();
+	{	    boolean flag=true;
+		return copyOfUserMap.get(userName).getWalletBalance()>=amount?flag:!flag;
+		   
+	}	
+	List <Transaction> toStoreTransaction=new ArrayList<>();
 	public void addBalance(int username,int userid,double amount)
 	{   int transactionId=rand.nextInt(1000000);
-		tr.add(new Transaction(username,userid,amount,transactionId,new Date()));
-		double db=hs.get(username).getWalletBalance();
+	toStoreTransaction.add(new Transaction(username,userid,amount,transactionId,new Date()));
+		double db=copyOfUserMap.get(username).getWalletBalance();
 		db=db-amount;
-		hs.get(username).setWalletBalance(db);
-		double db1=hs.get(userid).getWalletBalance();
+		copyOfUserMap.get(username).setWalletBalance(db);
+		double db1=copyOfUserMap.get(userid).getWalletBalance();
 		db1+=amount;
-		hs.get(userid).setWalletBalance(db1);
+		copyOfUserMap.get(userid).setWalletBalance(db1);
 		System.out.println("Money Sent Successfully\n"
 				+ "Rs "+amount+"\n"
 						+ "Transaction Id "+transactionId);
@@ -38,16 +35,16 @@ public class AllTransaction {
 	
 	public void displayTransaction(int username) {
 		int count=0;
-		for(int i=0;i<tr.size();i++)
+		for(int i=0;i<toStoreTransaction.size();i++)
 		{
-			Transaction data = tr.get(i);
+			Transaction data = toStoreTransaction.get(i);
 			if(data.getSender()==username) 
 			{System.out.println("-----------------------------------------------");
 				System.out.println("Your Transaction Id: "+data.getTransactionId()+"\n"
 						+ "Money Sent\n"
 						+ "Rs "+data.getAmount()+"\n"
 						+data.getDate()+"\n"
-								+ "To: "+hs.get(data.getReceiver()).getUserName()+"("+data.getReceiver()+")");
+								+ "To: "+copyOfUserMap.get(data.getReceiver()).getUserName()+"("+data.getReceiver()+")");
 				System.out.println("-----------------------------------------------");
 			count++;
 			}
@@ -56,7 +53,7 @@ public class AllTransaction {
 				System.out.println("Your Transaction Id: "+data.getTransactionId()+"\n"
 						+ "Money Received Rs "+data.getAmount()+"\n"
 						+data.getDate()+"\n"
-						+ "From: "+hs.get(data.getSender()).getUserName()+"("+data.getSender()+")");
+						+ "From: "+copyOfUserMap.get(data.getSender()).getUserName()+"("+data.getSender()+")");
 				System.out.println("-----------------------------------------------");
 				count++;
 			}

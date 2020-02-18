@@ -16,7 +16,7 @@ public class LoginUserService implements ILoginUserService {
 	@Override
 	public boolean validateReceiver(int username) {
 
-		return objectOfCheckLoginUser.CheckReceiver(username);
+		return objectOfCheckLoginUser.checkReceiver(username);
 	}
 
 	@Override

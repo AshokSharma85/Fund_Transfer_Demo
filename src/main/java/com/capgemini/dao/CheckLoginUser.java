@@ -13,18 +13,16 @@ public class CheckLoginUser implements ICheckLoginUserDao {
     }
 
 	@Override
-	public boolean CheckReceiver(int username) {
+	public boolean checkReceiver(int username) {
 		return obejctOfToAddUser.checkRec(username);
 		
 	}
 
 	@Override
 	public boolean validateUserAndRecieverDao(int username, int userid) {
-		//if(username.equals(userid))
-				if(username==userid)
-					return false;
-				return true;
-				//return false;
+		boolean flag=true;	
+		return username!=userid?flag:!flag;
+		
 	}
 	
 }

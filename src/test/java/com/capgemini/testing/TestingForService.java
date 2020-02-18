@@ -16,16 +16,17 @@ class TestingForService {
 	{ 
 		int userName=561236;
 		String password="ask123";
-		assertEquals(true,objectOfLoginUserService.validate(userName,password));
+		boolean b=objectOfLoginUserService.validate(userName, password);
+		assertEquals(true,b);
 	}
 	
 	@Test
 	public void validateReceiverTest()
 	{
-		int username=561236;
+		int username=56123;
 	  assertEquals(true,objectOfLoginUserService.validateReceiver(username));
 	}
-	
+
 	@Test
 	public void validateUserAndRecieverServiceTest()
 	{
