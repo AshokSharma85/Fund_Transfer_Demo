@@ -21,12 +21,12 @@ public class Client {
 		{
 			System.out.println("\nPress 1: To Login\n"
 					+ "Press 2: To Exit");
-			String input=scannerVariable.next();
+			String input=scannerVariable.nextLine();
 			switch(input)
 			{
 			case "1":
-				 System.out.println("Please Enter Your UserId");
-				 String user=scannerVariable.next();	
+				System.out.println("Please Enter Your UserId");
+				 String user=scannerVariable.nextLine();	
 				 /*
 				  * this boolean variable with validation will check whether the entered detail is having only number or not 
 				  */				 
@@ -44,7 +44,7 @@ public class Client {
 				  */
 		         int username=Integer.parseInt(user);
 		         System.out.println("Please Enter Your Password");
-				 String password=scannerVariable.next();
+				 String password=scannerVariable.nextLine();
 				 /*
 				  * this if will call the validate function of Loginuser class and return boolean 
 				  */
@@ -64,7 +64,7 @@ public class Client {
 						/*
 						 * to take input from user to perform this operations
 						 */
-						String insideInput=scannerVariable.next();
+						String insideInput=scannerVariable.nextLine();
 						switch(insideInput)
 						{
 						case "1":
@@ -81,7 +81,7 @@ public class Client {
 							break;
 						case "4":
 							System.out.println("Enter Receiver's userId");
-							String receiverId=scannerVariable.next();
+							String receiverId=scannerVariable.nextLine();
 							boolean validationOfReceiverId=Validation.check(receiverId, Validation.pattern);
 							if(!validationOfReceiverId)
 							{  

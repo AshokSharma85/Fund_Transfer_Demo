@@ -45,5 +45,5 @@ class TestingForService {
 		double amount=500;
 		assertEquals(true,objectOfBalanceOperationsService.checkWalletBalance(username, amount));
 	}
-	
+
 }

@@ -20,7 +20,7 @@ public class AllTransaction {
 	}	
 	List <Transaction> toStoreTransaction=new ArrayList<>();
 	/*
-	 * This method will add the appropriate details to arraylist 
+	 * This method will add the appropriate details to arraylist  
 	 */
 	public void addBalance(int username,int userid,double amount)
 	{   int transactionId=rand.nextInt(1000000);
@@ -38,6 +38,9 @@ public class AllTransaction {
 	
 	public void displayTransaction(int username) {
 		int count=0;
+		/*
+		 * This for loop will show the 
+		 */
 		for(int i=0;i<toStoreTransaction.size();i++)
 		{
 			Transaction data = toStoreTransaction.get(i);
