@@ -4,12 +4,12 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.*;
 
-import com.capgemini.service.BalanceOperationsService;
+import com.capgemini.service.ServiceClass;
 import com.capgemini.service.LoginUserService;
 import com.capgemini.validation.Validation;
 
 class TestingForService {
-	BalanceOperationsService objectOfBalanceOperationsService=new BalanceOperationsService();
+	ServiceClass objectOfBalanceOperationsService=new ServiceClass();
 	LoginUserService objectOfLoginUserService=new LoginUserService();
 	@Test
 	public void validateUserTest()

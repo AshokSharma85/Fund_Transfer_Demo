@@ -1,17 +1,15 @@
 package com.capgemini.ui;
 
 import java.util.Scanner;
-import com.capgemini.service.BalanceOperationsService;
-import com.capgemini.service.LoginUserService;
+import com.capgemini.service.ServiceClass;
 import com.capgemini.validation.Validation;
 
 public class Client {
 
 	public static void main(String[] args)  {
-		BalanceOperationsService objectOfBalanceOperations=new BalanceOperationsService();
+		ServiceClass objectOfServiceClass=new ServiceClass();
 		boolean varForFirstWhileLoop=true;
 	    Scanner scannerVariable=new Scanner(System.in);
-	    LoginUserService objectOfLoginUser=new LoginUserService();
 		System.out.println("*********************Welcome to Fund Transfer Application*****************");
 		/*
 		 * This while loop will be used to login into application and exit from application
@@ -55,7 +53,7 @@ public class Client {
 				 /*
 				  * this if will call the validate function of Loginuser class and return boolean 
 				  */
-				 if(objectOfLoginUser.validate(username,password))
+				 if(objectOfServiceClass.validate(username,password))
 				 {
 				/*
 				 After login successfully this while loop will work till user do not want to logout 
@@ -78,13 +76,13 @@ public class Client {
 						/*
 						 * This case will return the present amount of wallet  
 						 */
-							System.out.println(objectOfBalanceOperations.balanceOfWal(username));
+							System.out.println(objectOfServiceClass.balanceOfWal(username));
 							break;
 						case "2":
-							System.out.println(objectOfBalanceOperations.balanceOfBank(username));
+							System.out.println(objectOfServiceClass.balanceOfBank(username));
 							break;
 						case "3":
-							objectOfBalanceOperations.displayTransactionService(username);
+							objectOfServiceClass.displayTransactionService(username);
 							break;
 						case "4":
 							System.out.println("Enter Receiver's userId");
@@ -96,7 +94,7 @@ public class Client {
 								break;
 							}
 							int receiverIdOfUser=Integer.parseInt(receiverId);
-							if(objectOfLoginUser.validateReceiver(receiverIdOfUser) && objectOfLoginUser.validateUserAndRecieverService(username,receiverIdOfUser))
+							if(objectOfServiceClass.validateReceiver(receiverIdOfUser) && objectOfServiceClass.validateUserAndRecieverService(username,receiverIdOfUser))
 							{
 							System.out.println("Enter amount to be transfered");
 							String amountToCheck=scannerVariable.nextLine();
@@ -116,9 +114,9 @@ public class Client {
 								System.out.println(refOfException.getMessage());
 								break;
 							}
-							if(objectOfBalanceOperations.checkWalletBalance(username, amount))
+							if(objectOfServiceClass.checkWalletBalance(username, amount))
 							{
-								objectOfBalanceOperations.addBalanceService(username, receiverIdOfUser, amount);							
+								objectOfServiceClass.addBalanceService(username, receiverIdOfUser, amount);							
 							}			    
 							else
 							{
