@@ -1,9 +1,10 @@
 package com.capgemini.ui;
 
+@SuppressWarnings("serial")
 class AmountException extends Exception {
-    
+
   AmountException(String message){
-	  System.out.println(message);
+	  super(message);	 
   }
 	
 }

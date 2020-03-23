@@ -1,14 +1,13 @@
 package com.capgemini.ui;
 
 import java.util.Scanner;
-
 import com.capgemini.service.BalanceOperationsService;
 import com.capgemini.service.LoginUserService;
 import com.capgemini.validation.Validation;
 
 public class Client {
 
-	public static void main(String[] args) throws AmountException  {
+	public static void main(String[] args)  {
 		BalanceOperationsService objectOfBalanceOperations=new BalanceOperationsService();
 		boolean varForFirstWhileLoop=true;
 	    Scanner scannerVariable=new Scanner(System.in);
@@ -25,8 +24,10 @@ public class Client {
 			switch(input)
 			{
 			case "1":
+				String user;
 				System.out.println("Please Enter Your UserId");
-				 String user=scannerVariable.nextLine();	
+				while(true) {
+				user=scannerVariable.nextLine();	
 				 /*
 				  * this boolean variable with validation will check whether the entered detail is having only number or not 
 				  */				 
@@ -36,9 +37,15 @@ public class Client {
 				  */
 				 if(!validationOfUserName)
 				 {
-					 System.out.println("Please Enter Valid User Id");
+					 System.out.println("Invalid User Id \n"
+					 		+ "Please Enter Your User Id Again");
+					 
+				 }
+				 else
+				 {
 					 break;
 				 }
+				}
 				 /*
 				  * After validating user we will convert that data into integer and store them in integer variable   
 				  */
@@ -71,10 +78,10 @@ public class Client {
 						/*
 						 * This case will return the present amount of wallet  
 						 */
-							objectOfBalanceOperations.balanceOfWal(username);
+							System.out.println(objectOfBalanceOperations.balanceOfWal(username));
 							break;
 						case "2":
-							objectOfBalanceOperations.balanceOfBank(username);
+							System.out.println(objectOfBalanceOperations.balanceOfBank(username));
 							break;
 						case "3":
 							objectOfBalanceOperations.displayTransactionService(username);
@@ -92,21 +99,21 @@ public class Client {
 							if(objectOfLoginUser.validateReceiver(receiverIdOfUser) && objectOfLoginUser.validateUserAndRecieverService(username,receiverIdOfUser))
 							{
 							System.out.println("Enter amount to be transfered");
-							String amountToCheck=scannerVariable.next();
+							String amountToCheck=scannerVariable.nextLine();
 							boolean validationOfAmount=Validation.check(amountToCheck, Validation.pattern);
 							if(!validationOfAmount)
 							{  
 								System.out.println("Wrong Input!!\n"
-										+ "Amount Should be greater than Zero");	
+										+ "Amount Should be greater than Zero having Numbers Only");	
 								break;
 							}
 							double amount=Double.parseDouble(amountToCheck);
 							try {
 							UserException.checkAmount(amount);
 							}
-							catch(AmountException e)
+							catch(AmountException refOfException)
 							{
-								e.getMessage();
+								System.out.println(refOfException.getMessage());
 								break;
 							}
 							if(objectOfBalanceOperations.checkWalletBalance(username, amount))
@@ -115,7 +122,7 @@ public class Client {
 							}			    
 							else
 							{
-							System.out.println("Insufficient Balance");	
+							System.out.println("Insufficient Balance in Your Wallet to Transfer");	
 							}
 							}
 							else
@@ -134,8 +141,9 @@ public class Client {
 				 }
 				 else
 				 { 
-					 System.out.println("Invalid User");
+					 System.out.println("Username or Password is Wrong!!");
 				 }
+		         
 				break;
 			case "2":
 				varForFirstWhileLoop=false;

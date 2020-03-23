@@ -6,15 +6,15 @@ import org.junit.jupiter.api.*;
 
 import com.capgemini.service.BalanceOperationsService;
 import com.capgemini.service.LoginUserService;
+import com.capgemini.validation.Validation;
 
 class TestingForService {
 	BalanceOperationsService objectOfBalanceOperationsService=new BalanceOperationsService();
 	LoginUserService objectOfLoginUserService=new LoginUserService();
-	
 	@Test
 	public void validateUserTest()
 	{ 
-		int userName=561236;
+		int userName=1001;
 		String password="ask123";
 		boolean b=objectOfLoginUserService.validate(userName, password);
 		assertEquals(true,b);
@@ -23,7 +23,7 @@ class TestingForService {
 	@Test
 	public void validateReceiverTest()
 	{
-		int username=561236;
+		int username=1001;
 	  assertEquals(true,objectOfLoginUserService.validateReceiver(username));
 	}
  /*
@@ -33,17 +33,37 @@ class TestingForService {
 	@Test
 	public void validateUserAndRecieverServiceTest()
 	{
-		int usernameOfReceiver=561236;
-		int usernameOfSender=56123;
+		int usernameOfReceiver=1001;
+		int usernameOfSender=1001;
 		assertEquals(true,objectOfLoginUserService.validateUserAndRecieverService(usernameOfSender,usernameOfReceiver));
 	}
 	
 	@Test
 	public void checkWalletBalanceTest()
 	{
-		int username=561236;
+		int username=1001;
 		double amount=500;
 		assertEquals(true,objectOfBalanceOperationsService.checkWalletBalance(username, amount));
 	}
 
+	//Testcases for Validation
+	
+	@Test
+	public void validateCheker()
+	{
+		assertEquals(true, Validation.check("123", Validation.pattern));
+	}
+	
+	//Testing of return type String method
+	@Test
+	public void balanceOfWalTest()
+	{
+		assertEquals("Your Wallet Balance is 1500.0",objectOfBalanceOperationsService.balanceOfWal(561236));
+	}
+	
+	@Test
+	public void balanceOfBankTesting()
+	{
+		assertEquals("Your Bank Balance is 10000.0",objectOfBalanceOperationsService.balanceOfBank(561236));
+	}
 }

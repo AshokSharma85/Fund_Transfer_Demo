@@ -1,11 +1,11 @@
 package com.capgemini.service;
 
-import com.capgemini.dao.CheckLoginUser;
+import com.capgemini.dao.CheckLoginUserDao;
 
 
 public class LoginUserService implements ILoginUserService {
 
-	CheckLoginUser objectOfCheckLoginUser=new CheckLoginUser();
+	CheckLoginUserDao objectOfCheckLoginUser=new CheckLoginUserDao();
 		/*
 		 * This method will check the username and password which is written by user after validation 
 		 * if data is in collection then it will return true other it will written false
@@ -21,14 +21,14 @@ public class LoginUserService implements ILoginUserService {
 	@Override
 	public boolean validateReceiver(int username) {
 
-		return objectOfCheckLoginUser.checkReceiver(username);
+		return objectOfCheckLoginUser.checkReceiverDao(username);
 	}
 	/*
 	 *This method will check whether user is trying to send the money to himself/herself or not	 
 	 */
 	@Override
-	public boolean validateUserAndRecieverService(int username, int userid) {
-		return objectOfCheckLoginUser.validateUserAndRecieverDao(username,userid);
+	public boolean validateUserAndRecieverService(int userNameOfSender, int userNameOfReceiver) {
+		return objectOfCheckLoginUser.validateUserAndRecieverDao(userNameOfSender,userNameOfReceiver);
 	}
 	
 	

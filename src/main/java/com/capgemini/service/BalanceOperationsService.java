@@ -1,25 +1,25 @@
 package com.capgemini.service;
 
-import com.capgemini.dao.CheckBalance;
-import com.capgemini.dao.CheckTransaction;
+import com.capgemini.dao.CheckBalanceDao;
+import com.capgemini.dao.CheckTransactionDao;
 
 public class BalanceOperationsService implements IBalanceOperationsService  {
 
-	CheckBalance objectOfCheckBalance=new CheckBalance();
-	CheckTransaction objectOfCheckTransaction=new CheckTransaction();
+	CheckBalanceDao objectOfCheckBalance=new CheckBalanceDao();
+	CheckTransactionDao objectOfCheckTransaction=new CheckTransactionDao();
     /*
      * This method will write the balance of wallet of user
      */
 	@Override
-	public void balanceOfWal(int username) {
-		objectOfCheckBalance.balanceOfWallet(username);
+	public String balanceOfWal(int username) {
+		return objectOfCheckBalance.balanceOfWallet(username);
 	}
 	/*
      * This method will write the balance of account of user
      */
 	@Override
-	public void balanceOfBank(int username) {
-		objectOfCheckBalance.balanceOfBank(username);
+	public String balanceOfBank(int username) {
+		return objectOfCheckBalance.balanceOfBank(username);
 	}
 	/*
 	 * This will check if the money which user is wanting to send to other user is there in his/her wallet or not 

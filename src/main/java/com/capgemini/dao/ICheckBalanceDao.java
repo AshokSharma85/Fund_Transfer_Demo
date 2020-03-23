@@ -2,6 +2,6 @@ package com.capgemini.dao;
 
 public interface ICheckBalanceDao {
 
-	 void balanceOfBank(int username);
-	 void balanceOfWallet(int username);
+	 String balanceOfBank(int username);
+	 String balanceOfWallet(int username);
 }
